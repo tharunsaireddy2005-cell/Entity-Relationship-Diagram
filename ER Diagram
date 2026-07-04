@@ -1,0 +1,55 @@
+                               +----------------------+
+                               |        Users         |
+                               +----------------------+
+                               | PK UserID            |
+                               | Name                |
+                               | Email               |
+                               | Password            |
+                               | Role                |
+                               +----------------------+
+                                          |
+                                      1   |   M
+                                          |
+                                          |
+                               +----------------------+
+                               | Applicant_Details    |
+                               +----------------------+
+                               | PK ApplicantID       |
+                               | FK UserID            |
+                               | IncomeType          |
+                               | EducationType       |
+                               | FamilyStatus        |
+                               | HousingType         |
+                               | EmploymentDays      |
+                               +----------------------+
+                                   |             |
+                               1   | M       1   |   1
+                                   |             |
+                                   |             |
+                +------------------+             +----------------------+
+                |                                         |
+                |                                         |
+        +----------------------+                +----------------------+
+        |   Credit_History     |                | Approval_Prediction  |
+        +----------------------+                +----------------------+
+        | PK HistoryID         |                | PK PredictionID      |
+        | FK ApplicantID       |                | FK ApplicantID       |
+        | CreditScore          |                | FK ModelID           |
+        | PaymentHistory       |                | LoanStatus           |
+        | OverduePayments      |                | ConfidenceScore      |
+        | OutstandingLoans     |                | PredictionDate       |
+        +----------------------+                +----------------------+
+                |                                         ^
+                |                                         |
+                | Used for Prediction                     | M
+                |                                         |
+                |                                         | 1
+                                         +----------------------+
+                                         |      ML_Model        |
+                                         +----------------------+
+                                         | PK ModelID           |
+                                         | ModelName            |
+                                         | Algorithm            |
+                                         | Accuracy             |
+                                         | Version              |
+                                         +----------------------+
